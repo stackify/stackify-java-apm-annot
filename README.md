@@ -2,7 +2,6 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.stackify/stackify-java-apm-annot.svg)](http://mvnrepository.com/artifact/com.stackify/stackify-java-apm-annot)
 [![Build Status](https://travis-ci.org/stackify/stackify-java-apm-annot.png)](https://travis-ci.org/stackify/stackify-java-apm-annot)
-#[![Coverage Status](https://coveralls.io/repos/stackify/stackify-java-apm-annot/badge.png?branch=master)](https://coveralls.io/r/stackify/stackify-java-apm-annot?branch=master)
 
 @Trace Annotation for Stackify Java APM+
 
@@ -22,16 +21,36 @@ Add it as a maven dependency:
     <groupId>com.stackify</groupId>
     <artifactId>stackify-java-apm-annot</artifactId>
     <version>INSERT_LATEST_MAVEN_CENTRAL_VERSION</version>
-    <scope>runtime</scope>
 </dependency>
 ```
 
 ## Usage
 
-TODO
+Add custom instrumentation to classes using the @Trace annotation. The annotation needs to be added to the class and the method to be instrumented. This is an alternative to adding a custom configuration file (stackify-apm.json) to your application.
 
 ```
-TODO
+import com.stackify.apm.Trace;
+
+@Trace
+public class ClassToBeInstrumented 
+{
+    @Trace
+    public void methodToBeInstrumented()
+    {
+        ...
+    }
+    
+    @Trace
+    public void anotherMethodToBeInstrumented()
+    {
+        ...
+    }
+    
+    public void notInstrumented()
+    {
+        ...
+    }
+}
 ```
 
 ## License
