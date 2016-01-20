@@ -21,8 +21,42 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Trace
- * @author eric
+ * Trace Annotation for Stackify Java APM+
+ * 
+ * <p>
+ * Add custom instrumentation to classes using the @Trace annotation. The annotation 
+ * needs to be added to the class and the method to be instrumented. This is an 
+ * alternative to adding a custom configuration file (stackify-apm.json) to your 
+ * application.
+ * 
+ * <pre>
+ * <code>
+ * import com.stackify.apm.Trace;
+ * 
+ * {@literal @}Trace
+ * public class ClassToBeInstrumented 
+ * {
+ *     {@literal @}Trace
+ *     public void methodToBeInstrumented()
+ *     {
+ *         ...
+ *     }
+ *     
+ *     {@literal @}Trace
+ *     public void anotherMethodToBeInstrumented()
+ *     {
+ *         ...
+ *     }
+ *     
+ *     public void notInstrumented()
+ *     {
+ *         ...
+ *     }
+ * }
+ * </code> 
+ * </pre>
+ *
+ * @author Eric Martin
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.TYPE, ElementType.METHOD})
