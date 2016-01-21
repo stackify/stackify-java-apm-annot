@@ -1,6 +1,6 @@
 # stackify-java-apm-annot
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.stackify/stackify-java-apm-annot.svg)](http://mvnrepository.com/artifact/com.stackify/stackify-java-apm-annot)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.stackify/stackify-java-apm-annot/badge.svg)](http://mvnrepository.com/artifact/com.stackify/stackify-java-apm-annot)
 [![Build Status](https://travis-ci.org/stackify/stackify-java-apm-annot.png)](https://travis-ci.org/stackify/stackify-java-apm-annot)
 
 @Trace Annotation for Stackify Java APM+
