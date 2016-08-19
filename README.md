@@ -26,7 +26,17 @@ Add it as a maven dependency:
 
 ## Usage
 
-Add custom instrumentation to classes using the @Trace annotation. The annotation needs to be added to the class and the method to be instrumented. This is an alternative to adding a custom configuration file (stackify-apm.json) to your application.
+Add custom instrumentation to classes using the @Trace annotation. The annotation needs to be added to
+the class and the method to be instrumented. This is an alternative to adding a custom configuration
+file (stackify-apm.json) to your application.
+
+
+#### Tracked Functions
+* **trackedFunction**  marks a specific method as a tracked function.
+* **trackedFunctionName** gives control over how the tracked function will be identified in the dashboard. The function
+name can be a `String` and can also include the variables `{{ClassName}}`, `{{MethodName}}` and `{{MethodParameters[#]}}`
+(where `#` is an `int` referencing the parameter index on the annotated method, index starts at 0).
+
 
 ```
 import com.stackify.apm.Trace;
@@ -45,7 +55,19 @@ public class ClassToBeInstrumented
     {
         ...
     }
-    
+
+    @Trace(trackedFunction = true, trackedFunctionName = "Tracked Function Identifier")
+    public void anotherMethodToBeInstrumentedAndMarkedAsTrackedFunction()
+    {
+        ...
+    }
+
+    @Trace(trackedFunction = true, trackedFunctionName = "Tracked Function {{ClassName}} - {{MethodParameters[0]}}")
+    public void anotherMethodToBeInstrumentedAndMarkedAsTrackedFunctionVariable(String value)
+    {
+        ...
+    }
+
     public void notInstrumented()
     {
         ...

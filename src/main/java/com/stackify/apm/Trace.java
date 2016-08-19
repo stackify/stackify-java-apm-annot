@@ -22,38 +22,49 @@ import java.lang.annotation.Target;
 
 /**
  * Trace Annotation for Stackify Java APM+
- * 
  * <p>
- * Add custom instrumentation to classes using the @Trace annotation. The annotation 
- * needs to be added to the class and the method to be instrumented. This is an 
- * alternative to adding a custom configuration file (stackify-apm.json) to your 
+ * Add custom instrumentation to classes using the @Trace annotation. The annotation
+ * needs to be added to the class and the method to be instrumented. This is an
+ * alternative to adding a custom configuration file (stackify-apm.json) to your
  * application.
- * 
+ * <p>
  * <pre>
  * <code>
  * import com.stackify.apm.Trace;
- * 
+ *
  * {@literal @}Trace
- * public class ClassToBeInstrumented 
+ * public class ClassToBeInstrumented
  * {
  *     {@literal @}Trace
  *     public void methodToBeInstrumented()
  *     {
  *         ...
  *     }
- *     
+ *
  *     {@literal @}Trace
  *     public void anotherMethodToBeInstrumented()
  *     {
  *         ...
  *     }
- *     
+ *
+ *     {@literal @}Trace(trackedFunction = true, trackedFunctionName = "Function Identifier")
+ *     public void anotherMethodToBeInstrumentedAndMarkedAsTrackedFunction()
+ *     {
+ *         ...
+ *     }
+ *
+ *     {@literal @}Trace(trackedFunction = true, trackedFunctionName = "Tracked Function {{ClassName}} - {{MethodParameters[0]}}")
+ *     public void anotherMethodToBeInstrumentedAndMarkedAsTrackedFunctionVariable(String value)
+ *     {
+ *          ...
+ *     }
+ *
  *     public void notInstrumented()
  *     {
  *         ...
  *     }
  * }
- * </code> 
+ * </code>
  * </pre>
  *
  * @author Eric Martin
@@ -61,4 +72,9 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.TYPE, ElementType.METHOD})
 public @interface Trace {
+
+    boolean trackedFunction() default false;
+
+    String trackedFunctionName() default "";
+
 }
