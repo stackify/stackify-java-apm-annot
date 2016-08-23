@@ -59,6 +59,18 @@ import java.lang.annotation.Target;
  *          ...
  *     }
  *
+ *     {@literal @}Trace(category = "MyService", subcategory = "MyMethod")
+ *     public void anotherMethodToBeInstrumentedAsMyServiceMyMethod(String value)
+ *     {
+ *          ...
+ *     }
+ *
+ *     {@literal @}Trace(action = true)
+ *     public void anotherMethodToBeInstrumentedAsRequestedAction(String value)
+ *     {
+ *          ...
+ *     }
+ *
  *     public void notInstrumented()
  *     {
  *         ...
@@ -77,4 +89,10 @@ public @interface Trace {
 
     String trackedFunctionName() default "";
 
+	String category() default "Java";
+	
+	String subcategory() default "Other";
+	
+	boolean action() default false;
+	
 }
