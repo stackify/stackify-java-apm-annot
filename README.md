@@ -37,6 +37,10 @@ file (stackify-apm.json) to your application.
 name can be a `String` and can also include the variables `{{ClassName}}`, `{{MethodName}}` and `{{MethodParameters[#]}}`
 (where `#` is an `int` referencing the parameter index on the annotated method, index starts at 0).
 
+#### Custom Trace Entry Point
+Stackify by default generates traces from web-requests on [supported application servers](http://support.stackify.com/hc/en-us/articles/209709913-What-Java-Application-Containers-and-Frameworks-are-Supported-) 
+and non-web-requests from [supported frameworks](http://support.stackify.com/hc/en-us/articles/209709913-What-Java-Application-Containers-and-Frameworks-are-Supported-).
+You can extend support by using `@Trace(start = true)` on a method; which will start a new trace. 
 
 ```
 import com.stackify.apm.Trace;
@@ -44,6 +48,13 @@ import com.stackify.apm.Trace;
 @Trace
 public class ClassToBeInstrumented 
 {
+
+    @Trace(start = true)
+    public void methodToStartNewTrace()
+    {
+        ...
+    }
+
     @Trace
     public void methodToBeInstrumented()
     {
@@ -77,7 +88,7 @@ public class ClassToBeInstrumented
 
 ## License
 
-Copyright 2016 Stackify, LLC.
+Copyright 2017 Stackify, LLC.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
