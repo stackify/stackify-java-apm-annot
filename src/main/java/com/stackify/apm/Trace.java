@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Stackify
+ * Copyright 2017 Stackify
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,13 @@ import java.lang.annotation.Target;
  * {@literal @}Trace
  * public class ClassToBeInstrumented
  * {
+ *
+ *     {@literal @}Trace(start = true)
+ *     public void methodToStartNewTrace()
+ *     {
+ *         ...
+ *     }
+ *
  *     {@literal @}Trace
  *     public void methodToBeInstrumented()
  *     {
@@ -90,9 +97,10 @@ public @interface Trace {
     String trackedFunctionName() default "";
 
 	String category() default "Java";
-	
+
 	String subcategory() default "Other";
-	
+
 	boolean action() default false;
-	
+
+    boolean start() default false;
 }
