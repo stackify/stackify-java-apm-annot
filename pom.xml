@@ -3,7 +3,7 @@
 
 	<groupId>com.stackify</groupId>
 	<artifactId>stackify-java-apm-annot</artifactId>
-	<version>1.0.4-SNAPSHOT</version>
+	<version>1.0.4</version>
 	
 	<name>Stackify Java APM Annotations</name>
 	<description>Stackify Java APM Annotations</description>
