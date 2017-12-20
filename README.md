@@ -7,7 +7,7 @@
 
 Stackify APM+ Overview:
 
-http://support.stackify.com/hc/en-us/categories/200398749-APM-
+http://support.stackify.com/agent-installation-overview/
 
 Sign Up for a Trial:
 
