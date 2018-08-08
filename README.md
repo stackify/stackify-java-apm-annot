@@ -26,6 +26,31 @@ Add it as a maven dependency:
 
 ## Usage
 
+
+### RUM Manual Instrumentation 
+
+Real User Monitoring (RUM) manual instrumentation allows you to specify where the RUM JavaScript block is injected. 
+
+**Note**: Ensure that auto instrumentation is disabled by adding **rum.autoInstrument=false** to **stackify-api.properties** in your application's classpath.
+
+Your application code will need to call out to the Stackify **getRUMJavaScriptBlock()** method in the `<head>` section as detailed below: 
+
+#### JSP Example
+  
+````
+<html>
+  <head> 
+        <%= com.stackify.apm.Stackify.getRUMJavaScriptBlock() %>
+        <script and link tags>
+    </head>
+    <body>
+    ... 
+    </body>
+</html>
+````
+
+### @Trace Annotation
+
 Add custom instrumentation to classes using the @Trace annotation. The annotation needs to be added to
 the class and the method to be instrumented. This is an alternative to adding a custom configuration
 file (stackify-apm.json) to your application.
