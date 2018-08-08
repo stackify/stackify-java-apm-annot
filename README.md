@@ -31,11 +31,16 @@ Add it as a maven dependency:
 
 Real User Monitoring (RUM) manual instrumentation allows you to specify where the RUM JavaScript block is injected. 
 
-**Note**: Ensure that auto instrumentation is disabled by adding **rum.autoInstrument=false** to **stackify-api.properties** in your application's classpath.
+It is recommended you provide a `stackify-api.properties` file in your application classpath with the following content: 
 
-Your application code will need to call out to the Stackify **getRUMJavaScriptBlock()** method in the `<head>` section as detailed below: 
+````
+stackify.application=My Application Name
+stackify.environment=My Environment Name
+````
 
-#### JSP Example
+Your application code will need to call out to the Stackify `com.stackify.apm.Stackify.getRUMJavaScriptBlock()` method in the `<head>` section as detailed below: 
+
+**JSP Example**
   
 ````
 <html>
@@ -48,6 +53,7 @@ Your application code will need to call out to the Stackify **getRUMJavaScriptBl
     </body>
 </html>
 ````
+
 
 ### @Trace Annotation
 
